@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<Context>
+
+
+	<Resource name="BeanManager" auth="Container"
+		type="jakarta.enterprise.inject.spi.BeanManager"
+		factory="org.jboss.weld.resources.ManagerObjectFactory" />
+
+ 	<Resource name="jdbc/MySQLDB"
+             auth="Container"
+             type="javax.sql.DataSource"
+             maxActive="100"
+             maxIdle="30"
+             maxWait="10000"
+             username="jakarta"
+             password="Jakarta@1!"
+             driverClassName="com.mysql.cj.jdbc.Driver"
+             url="jdbc:mysql://localhost:3306/jakarta"/>
+	
+
+	             
+	<Resource name="jdbc/MySQLDBG" 
+				auth="Container"
+				type="javax.sql.DataSource" 
+				factory="org.apache.commons.dbcp2.BasicDataSourceFactory"
+				driverClassName="com.mysql.cj.jdbc.Driver"
+				username="jakarta"
+				password="Jakarta@1!"
+				url="jdbc:mysql://localhost:3306/jakarta" 
+		 		maxActive="20"
+		 		jta="true"
+		 		maxIdle="10" />
+		 		
+		 		
+	<Resource name="UserTransaction" 
+			auth="Container"
+          type="jakarta.transaction.UserTransaction"          
+          transactionManager="org.apache.geronimo.transaction.manager.GeronimoTransactionManager"/>
+	
+	<Transaction factory="org.apache.geronimo.transaction.GeronimoUserTransaction"/>
+	
+</Context>
